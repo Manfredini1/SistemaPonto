@@ -6,20 +6,21 @@
         <link rel="stylesheet" type="text/css" href="estilo.css">
     </head>
     <body>
+        
         <div class="container">
             <div class="selecao">
-                <div class="header">
-                    <h2>Bem vindo 'Fulano de Tal' </h2>
+                <div class="fulano">
+                    <h2>Bem vindo, </h2><h2 id="nome">'Fulano de Tal'</h2>
                     <h5>Selecione o seu perfil de usuário:</h5>
                     <br>
                     <br>
                 </div>
 
                 <div align="center">
-                    <select class="perfil">
-                        <option value="trabalhador">Trabalhador</option>
-                        <option value="coord-curso">Coordenador de Curso</option>
-                        <option value="coord-nucleo">Coordenador do Núcleo Pedagógico</option>
+                    <select class="perfil" name='job' required>
+                        <option value="Trabalhador">Trabalhador</option>
+                        <option value="Coordenador de Curso">Coordenador de Curso</option>
+                        <option value="Coordenador do Núcleo Pedagógico">Coordenador do Núcleo Pedagógico</option>
                     </select>
                 </div>
 
@@ -28,7 +29,7 @@
                 <br>
                 <br>
                 <div class="butt-entrar">
-                    <button>Acessar</button>
+                    <input type="button" onclick="window.location.href='InserirHora.html'" value=Acessar>
                 </div>  
 
                 <br>
@@ -39,5 +40,6 @@
             <div class="imagem"></div>
 
         </div>
+        <script defer src='validData.js'></script>
     </body>
 </html>

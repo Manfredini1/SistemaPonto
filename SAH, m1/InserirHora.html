@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
         <meta charset="UTF-8"/>
         <title>SAH</title>
         <link rel="stylesheet" type="text/css" href="estilo.css">
     </head>
 
     <body>
+        
         <div class="container">
             <div class="user">
                 <div class="header">
                     <br>
                     <div class="tooltip">
-                        <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" style= "width:120px"</img>
+                        <img src="imagem/user.png" style= "width:120px">
                         <span class="tooltiptext">Editar foto</span>
                     </div>
-
-                    <h2>'Fulano de Tal'</h2>
-                    <h3>'Perfil'</h3>
+                    
+                    <h2 id="nome">'Fulano'</h2>
+                    <h3 id="perf">'Perfil'</h3>
                 </div>
 
                 <div align="center">
                     <br>     
                     <div class="opcoes">
           
-                        <button>Inserir</button><br><br>
-                        <button>Editar</button><br><br>
-                        <button>Visualizar</button><br><br>
+                        <button onclick="window.location.href='InserirHora.html'";>Inserir</button><br><br>
+                        <button onclick="window.location.href='EditarHora.html'";>Editar</button><br><br>
+                        <button onclick="window.location.href='ConsultarHora.html'";>Visualizar</button><br><br>
                         <div id="divBusca">
                             <input type="text" id="txtBusca" placeholder="Pesquisar..."/>
-                            <img src="https://pics.freeicons.io/uploads/icons/png/15028084081543238917-512.png" style= "width:25px"id="btnBusca" alt="Buscar"/>
+                            <img src="imagem/buscar.png" style= "width:25px"id="btnBusca" alt="Buscar"/>
                         </div>
                     </div>
 
@@ -39,35 +41,43 @@
 
             <div class="tabela">
                 <div class="painel">
-                    <h3 class="h3">Cadastrar hora:</h3>
+                    <h3 class="h3">Cadastrar Hora:</h3>
+                    
                     <div class="cadastro">
-                        <div class="data">
+                        <div id="data">
                             <label>Data</label><br>
-                            <input type="date">
+                            <input type="date" required min="2021-01-01" max="2021-12-31">
                         </div>
 
-                    <div class="hora de entrada">
+                    <div id="horaEntrada">
                         <label>Entrada</label><br>
-                        <input type="time" value="00:00">
+                        <input type="time" name='entrada' required>
                      </div>
 
-                    <div class="hora de saida">
+                    <div id="horaSaida">
                         <label>Saída</label><br>
-                        <input type="time" value="00:00">
+                        <input type="time" name='saida' required>
                     </div>
 
-                    <div class="justifica">
+                    <div id="justifica">
                         <label>Justificativa</label><br>
-                        <select class="drop">
-                            <option value="just 1">Justificativa 1</option>
-                            <option value="just 2">Justificativa 2</option>
-                            <option value="just 3">Justificativa 3</option>
-                            <option value="just 4">Justificativa 4</option>
+                        <select id="drop" required>
+                            <option value="0">Selecionar</option>
+                            <option value="1">Justificativa 1</option>
+                            <option value="2">Justificativa 2</option>
+                            <option value="3">Justificativa 3</option>
+                            <option value="4">Justificativa 4</option>
                         </select>
                     </div>
-
-                        <button class=inserir>Inserir</button>
+                        
+                        <button class=inserir id=inserir-btn onclick = validateTime() >Inserir</button>
+                        
                     </div> 
+
+                    <div class= "erro-hora">
+                        <p></p>
+                        <p id="erro-cadastro">
+                    </div>
 
                     <div class="quadro">
                         <h3 class="h3">Lista de horas:</h3>
@@ -90,8 +100,8 @@
                                     <td>10:00</td>
                                     <td>02:00</td>
                                     <td>Produção</td>
-                                    <td><img src="https://pics.freeicons.io/uploads/icons/png/19067155231543238878-512.png" style= "width:20px"id="edit-btn" alt="Edit"/>
-                                    <img src="https://pics.freeicons.io/uploads/icons/png/20407009431543238936-512.png" style= "width:20px"id="trash-btn" alt="Trash"/></td>
+                                    <td><img src="imagem/editar.png" style= "width:20px"id="edit-btn" alt="Edit"/>
+                                        <img src="imagem/excluir.png" style= "width:20px"id="trash-btn" alt="Trash"/></td>
                                 </tr>
 
                                 <tr>
@@ -100,8 +110,8 @@
                                     <td>18:00</td>
                                     <td>08:00</td>
                                     <td>Capacitação</td>
-                                    <td><img src="https://pics.freeicons.io/uploads/icons/png/19067155231543238878-512.png" style= "width:20px"id="edit-btn" alt="Edit"/>
-                                    <img src="https://pics.freeicons.io/uploads/icons/png/20407009431543238936-512.png" style= "width:20px"id="trash-btn" alt="Trash"/></td>
+                                    <td><img src="imagem/editar.png" style= "width:20px"id="edit-btn" alt="Edit"/>
+                                        <img src="imagem/excluir.png" style= "width:20px"id="trash-btn" alt="Trash"/></td>
                                 </tr>
 
                                 <tr>
@@ -110,8 +120,8 @@
                                     <td>17:00</td>
                                     <td>07:00</td>
                                     <td>Versionamento</td>
-                                    <td><img src="https://pics.freeicons.io/uploads/icons/png/19067155231543238878-512.png" style= "width:20px"id="edit-btn" alt="Edit"/>
-                                    <img src="https://pics.freeicons.io/uploads/icons/png/20407009431543238936-512.png" style= "width:20px"id="trash-btn" alt="Trash"/></td>
+                                    <td><img src="imagem/editar.png" style= "width:20px"id="edit-btn" alt="Edit"/>
+                                        <img src="imagem/excluir.png" style= "width:20px"id="trash-btn" alt="Trash"/></td>
                                 </tr>   
 
                                 <tr>
@@ -120,8 +130,8 @@
                                     <td>17:00</td>
                                     <td>07:00</td>
                                     <td>Versionamento</td>
-                                    <td><img src="https://pics.freeicons.io/uploads/icons/png/19067155231543238878-512.png" style= "width:20px"id="edit-btn" alt="Edit"/>
-                                    <img src="https://pics.freeicons.io/uploads/icons/png/20407009431543238936-512.png" style= "width:20px"id="trash-btn" alt="Trash"/></td>
+                                    <td><img src="imagem/editar.png" style= "width:20px"id="edit-btn" alt="Edit"/>
+                                        <img src="imagem/excluir.png" style= "width:20px"id="trash-btn" alt="Trash"/></td>
                                 </tr>  
                             </tbody>          
                         </table>
@@ -129,13 +139,13 @@
                         <br>
                         <div class=h4>
                             <h4>Legenda:</h4>
-                            <img src="https://pics.freeicons.io/uploads/icons/png/19067155231543238878-512.png" style= "width:20px"id="edit" alt="Edit"/> <label>Editar</label>
-                            <img src="https://pics.freeicons.io/uploads/icons/png/20407009431543238936-512.png" style= "width:20px"id="trash" alt="Trash"/> <label>Excluir</label>
+                            <img src="imagem/editar.png" style= "width:20px"id="edit" alt="Edit"/> <label>Editar</label>
+                                <img src="imagem/excluir.png" style= "width:20px"id="trash" alt="Trash"/> <label>Excluir</label>
                         </div>
 
                         <div class="enviar">
                             <button>Enviar lista</button>
-                            <button>Voltar</button>
+                            <button onclick="window.location.href='SelecaoPerfil.html'";>Voltar</button>
                             <br>
                             <br>
                         </div>
@@ -143,5 +153,6 @@
                 </div>
             </div>
         </div>
+        <script defer src='validData.js'></script>
     </body>
 </html>
